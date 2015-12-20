@@ -4,28 +4,28 @@ execute pathogen#infect()
 set background=dark
 colorscheme hybrid
 
-set hid           " hide abandoned buffers
-set ruler         " show the cursor position
-set mat=2         " show matching brackets
-set number        " show line numbers
-set mouse=a       " allow use of mouse
-set ttyfast       " optimize for fast terminal connections
-set nobackup      " disable backups
-set hlsearch      " highlight searches
-set expandtab     " use spaces
-set tabstop=2     " ident two
-set showmatch     " show matching brackets
-set incsearch     " highlight dynamically as pattern is typed
-set ignorecase    " ignore case of searches
-set cursorline    " highlight current line
-set splitright    " open new buffers on right
-set shiftwidth=2  " ident two
-set laststatus=2  " always display status
-set nocompatible  " make Vim more useful
-set encoding=utf-8 " use utf-8 encoding
+set hid                      " hide abandoned buffers
+set ruler                    " show the cursor position
+set mat=2                    " show matching brackets
+set number                   " show line numbers
+set mouse=a                  " allow use of mouse
+set ttyfast                  " optimize for fast terminal connections
+set nobackup                 " disable backups
+set hlsearch                 " highlight searches
+set expandtab                " use spaces
+set tabstop=2                " ident two
+set showmatch                " show matching brackets
+set incsearch                " highlight dynamically as pattern is typed
+set ignorecase               " ignore case of searches
+set cursorline               " highlight current line
+set splitright               " open new buffers on right
+set shiftwidth=2             " ident two
+set laststatus=2             " always display status
+set nocompatible             " make Vim more useful
+set encoding=utf-8           " use utf-8 encoding
 set wildignore+=node_modules " ignore node_modules
 
-" Map moving between buffers
+" Move between buffers
 map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
@@ -53,7 +53,7 @@ set t_vb=
 autocmd! GUIEnter * set vb t_vb=
 
 " Ack
-nmap <leader>a :Ack
+nmap <leader>s :Ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Airline
@@ -77,6 +77,9 @@ let g:jsx_ext_required = 0
 " vim-multiple-cursors
 let g:multi_cursor_start_key='<C-n>'
 
+" neocomplete
+let g:neocomplete#enable_at_startup=1
+
 " NERDTree
 map <leader>nt :NERDTreeToggle<CR>
 
@@ -86,3 +89,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Open a NERDTree automatically on vim startup
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Tabular
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
