@@ -19,6 +19,7 @@ set incsearch                " highlight dynamically as pattern is typed
 set ignorecase               " ignore case of searches
 set cursorline               " highlight current line
 set splitright               " open new buffers on right
+set splitbelow               " open new buffers on bottom
 set shiftwidth=2             " ident two
 set laststatus=2             " always display status
 set nocompatible             " make Vim more useful
@@ -65,6 +66,7 @@ let g:airline_theme='hybrid'
 let g:airline_powerline_fonts=1
 let g:airline_symbols.linenr = '¶'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 set guifont=Source\ Code\ Pro\ for\ Powerline
 
 " Ctrl+P
@@ -76,6 +78,19 @@ let g:jsx_ext_required = 0
 
 " vim-multiple-cursors
 let g:multi_cursor_start_key='<C-n>'
+
+" resolve neocomplete conflict
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
 
 " neocomplete
 let g:neocomplete#enable_at_startup=1
@@ -89,6 +104,30 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Open a NERDTree automatically on vim startup
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Syntastic
+let g:syntastic_mode_map = { 'mode': 'active',
+                            \ 'active_filetypes': ['javascript'],
+                            \ 'passive_filetypes': [] }
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+
+" Override eslint with local version where necessary.
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+  let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+  let g:syntastic_javascript_eslint_exec = local_eslint
+endif
 
 " Tabular
 nmap <Leader>a= :Tabularize /=<CR>
