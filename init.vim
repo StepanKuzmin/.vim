@@ -32,6 +32,9 @@ map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
 
+nnoremap <C-Tab> :bnext<CR>
+nnoremap <S-C-Tab> :bprevious<CR>
+
 " Move lines using Shift+Up/Down
 nnoremap <S-Down> :m .+1<CR>==
 nnoremap <S-Up> :m .-2<CR>==
@@ -68,6 +71,9 @@ let g:airline_symbols.linenr = '¶'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 set guifont=Source\ Code\ Pro\ for\ Powerline
+
+" Bbye
+nnoremap <Leader>q :Bdelete<CR>
 
 " Ctrl+P
 let g:ctrlp_map = '<C-p>'
@@ -106,10 +112,6 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Syntastic
-let g:syntastic_mode_map = { 'mode': 'active',
-                            \ 'active_filetypes': ['javascript'],
-                            \ 'passive_filetypes': [] }
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
