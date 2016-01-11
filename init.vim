@@ -35,6 +35,7 @@ map <leader>l :wincmd l<CR>
 nnoremap <C-Tab> :bnext<CR>
 nnoremap <S-C-Tab> :bprevious<CR>
 
+
 " Move lines using Shift+Up/Down
 nnoremap <S-Down> :m .+1<CR>==
 nnoremap <S-Up> :m .-2<CR>==
@@ -74,6 +75,9 @@ set guifont=Source\ Code\ Pro\ for\ Powerline
 
 " Bbye
 nnoremap <Leader>q :Bdelete<CR>
+
+" Comment on cmd-\
+map <D-Bslash> :Commentary<CR>
 
 " Ctrl+P
 let g:ctrlp_map = '<C-p>'
