@@ -35,7 +35,6 @@ map <leader>l :wincmd l<CR>
 nnoremap <C-Tab> :bnext<CR>
 nnoremap <S-C-Tab> :bprevious<CR>
 
-
 " Move lines using Shift+Up/Down
 nnoremap <S-Down> :m .+1<CR>==
 nnoremap <S-Up> :m .-2<CR>==
@@ -80,8 +79,23 @@ nnoremap <Leader>q :Bdelete<CR>
 map <D-Bslash> :Commentary<CR>
 
 " Ctrl+P
-let g:ctrlp_map = '<C-p>'
+" map <D-P> <C-P>
+let g:ctrlp_map = '<D-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" CtrlP auto cache clearing.
+function! SetupCtrlP()
+  if exists("g:loaded_ctrlp") && g:loaded_ctrlp
+    augroup CtrlPExtension
+      autocmd!
+      autocmd FocusGained  * CtrlPClearCache
+      autocmd BufWritePost * CtrlPClearCache
+    augroup END
+  endif
+endfunction
+if has("autocmd")
+  autocmd VimEnter * :call SetupCtrlP()
+endif
 
 " vim-jsx
 let g:jsx_ext_required = 0
