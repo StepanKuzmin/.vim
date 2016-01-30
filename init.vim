@@ -73,15 +73,14 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 set guifont=Source\ Code\ Pro\ for\ Powerline
 
 " Bbye
-nnoremap <Leader>q :Bdelete<CR>
+nnoremap <leader>q :Bdelete<CR>
 
-" Comment on cmd-\
-map <D-Bslash> :Commentary<CR>
-inoremap <D-Bslash> <Esc>:Commentary<CR>==gi
-vnoremap <D-Bslash> :Commentary<CR>gv=gv
+" Comment on cmd-/
+map <D-/> :Commentary<CR>
+inoremap <D-/> <Esc>:Commentary<CR>==gi
+vnoremap <D-/> :Commentary<CR>gv=gv
 
 " Ctrl+P
-" map <D-P> <C-P>
 let g:ctrlp_map = '<D-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
@@ -103,6 +102,7 @@ endif
 let g:jsx_ext_required = 0
 
 " vim-multiple-cursors
+let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_start_key='<C-n>'
 
 " resolve neocomplete conflict
@@ -122,7 +122,9 @@ endfunction
 let g:neocomplete#enable_at_startup=1
 
 " NERDTree
-map <leader>nt :NERDTreeToggle<CR>
+map <D-Bslash> :NERDTreeToggle<CR>
+inoremap <D-Bslash> <Esc>:NERDTreeToggle<CR>==gi
+vnoremap <D-Bslash> :NERDTreeToggle<CR>gv=gv
 
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
