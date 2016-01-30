@@ -77,6 +77,8 @@ nnoremap <Leader>q :Bdelete<CR>
 
 " Comment on cmd-\
 map <D-Bslash> :Commentary<CR>
+inoremap <D-Bslash> <Esc>:Commentary<CR>==gi
+vnoremap <D-Bslash> :Commentary<CR>gv=gv
 
 " Ctrl+P
 " map <D-P> <C-P>
