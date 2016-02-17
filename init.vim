@@ -34,6 +34,10 @@ map <leader>l :wincmd l<CR>
 
 nnoremap <C-Tab> :bnext<CR>
 nnoremap <S-C-Tab> :bprevious<CR>
+inoremap <C-Tab> <Esc> :bnext<CR>==gi
+inoremap <S-C-Tab> <Esc> :bprevious<CR>==gi
+vnoremap <C-Tab> :bnext<CR>gv=gv
+vnoremap <S-C-Tab> :bprevious<CR>gv=gv
 
 " Move lines using Shift+Up/Down
 nnoremap <S-Down> :m .+1<CR>==
