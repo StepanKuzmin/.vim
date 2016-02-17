@@ -53,6 +53,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Remove scrollbars
 set guioptions-=L
 set guioptions-=r
+set guioptions+=c
 
 " Disable error bells
 set noerrorbells
@@ -61,7 +62,7 @@ set t_vb=
 autocmd! GUIEnter * set vb t_vb=
 
 " Ack
-nmap <leader>s :Ack
+nmap <leader>s :Ack<Space>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Airline
@@ -101,6 +102,10 @@ endfunction
 if has("autocmd")
   autocmd VimEnter * :call SetupCtrlP()
 endif
+
+" delimitMate
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
 
 " vim-jsx
 let g:jsx_ext_required = 0
