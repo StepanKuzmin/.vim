@@ -26,6 +26,9 @@ set nocompatible             " make Vim more useful
 set encoding=utf-8           " use utf-8 encoding
 set wildignore+=node_modules " ignore node_modules
 
+set backupdir=$HOME/.vim/backup/
+set directory=$HOME/.vim/swp/
+
 " Move between buffers
 map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
@@ -128,7 +131,12 @@ function! Multiple_cursors_after()
 endfunction
 
 " neocomplete
-let g:neocomplete#enable_at_startup=1
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><Esc> pumvisible() ? "\<C-y>" : "\<Esc>"
 
 " NERDTree
 map <D-Bslash> :NERDTreeToggle<CR>
