@@ -3,6 +3,7 @@ execute pathogen#infect()
 
 set background=dark
 colorscheme hybrid
+let g:hybrid_custom_term_colors = 1
 
 set hid                      " hide abandoned buffers
 set ruler                    " show the cursor position
@@ -26,8 +27,12 @@ set nocompatible             " make Vim more useful
 set encoding=utf-8           " use utf-8 encoding
 set wildignore+=node_modules " ignore node_modules
 
-set backupdir=$HOME/.vim/backup/
-set directory=$HOME/.vim/swp/
+set nobackup
+set noswapfile
+set nowritebackup
+
+" set backupdir=$HOME/.vim/backup/
+" set directory=$HOME/.vim/swp/
 
 " Move between buffers
 map <leader>h :wincmd h<CR>
@@ -64,6 +69,9 @@ set novisualbell
 set t_vb=
 autocmd! GUIEnter * set vb t_vb=
 
+" leader
+" let mapleader = "\<Space>"
+
 " Ack
 nmap <leader>s :Ack<Space>
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -91,6 +99,12 @@ vnoremap <D-/> :Commentary<CR>gv=gv
 " Ctrl+P
 let g:ctrlp_map = '<D-p>'
 let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_map = '<Space>'
+" let g:ctrlp_map = '<leader>p'
+
+" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git'
+" let g:ctrlp_by_filename = 1 " search by filename and not full path
+" let g:ctrlp_clear_cache_on_exit = 0 " keep the cache after exit
 
 " CtrlP auto cache clearing.
 function! SetupCtrlP()
@@ -107,8 +121,8 @@ if has("autocmd")
 endif
 
 " delimitMate
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
+" let delimitMate_expand_cr = 1
+" let delimitMate_expand_space = 1
 
 " vim-jsx
 let g:jsx_ext_required = 0
@@ -136,12 +150,17 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><Esc> pumvisible() ? "\<C-y>" : "\<Esc>"
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><Esc> pumvisible() ? "\<C-y>" : "\<Esc>"
 
 " NERDTree
 map <D-Bslash> :NERDTreeToggle<CR>
 inoremap <D-Bslash> <Esc>:NERDTreeToggle<CR>==gi
 vnoremap <D-Bslash> :NERDTreeToggle<CR>gv=gv
+
+let g:NERDTreeMinimalUI = 1  " disable the 'Press ? for help' text
+let g:NERDTreeShowHidden = 1 " display hidden files
 
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -175,3 +194,8 @@ nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
+
+" neovim
+" smooth-scroll
+map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
