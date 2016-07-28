@@ -9,6 +9,7 @@ set hid                      " hide abandoned buffers
 set ruler                    " show the cursor position
 set mat=2                    " show matching brackets
 set number                   " show line numbers
+set relativenumber           " show relative line number
 set mouse=a                  " allow use of mouse
 set ttyfast                  " optimize for fast terminal connections
 set nobackup                 " disable backups
@@ -30,9 +31,6 @@ set wildignore+=node_modules " ignore node_modules
 set nobackup
 set noswapfile
 set nowritebackup
-
-" set backupdir=$HOME/.vim/backup/
-" set directory=$HOME/.vim/swp/
 
 " Move between buffers
 map <leader>h :wincmd h<CR>
