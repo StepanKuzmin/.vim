@@ -4,7 +4,13 @@ My beloved VIM setup
 
 ```shell
 brew install git the_silver_searcher
-brew install macvim --with-cscope --with-lua
+brew tap neovim/neovim
+brew tap rogual/neovim-dot-app
+brew tap caskroom/fonts
+brew install neovim-dot-app
+brew linkapps neovim-dot-app
+brew cask install font-fira-code
+brew cask install font-fira-mono-for-powerline
 ```
 
 ## Features
@@ -13,8 +19,6 @@ brew install macvim --with-cscope --with-lua
 * Move lines with **shift+arrows**
 * Scroll buffers with **ctrl+tab** and **ctr+shift+tab**
 * Search with **cmd+f** ([ack](https://github.com/mileszs/ack.vim))
-* Autocompletion with [neocomplete](https://github.com/Shougo/neocomplete.vim)
-* Multiple cursors with **ctrl+n** ([vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors))
 * Close buffer on **\q** ([vim-bbye](https://github.com/moll/vim-bbye))
 * Full path fuzzy finder with **cmd+p** ([ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim))
 * Comment lines with **cmd+/** ([vim-commentary](https://github.com/tpope/vim-commentary))

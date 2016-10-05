@@ -9,7 +9,7 @@ set hid                      " hide abandoned buffers
 set ruler                    " show the cursor position
 set mat=2                    " show matching brackets
 set number                   " show line numbers
-set relativenumber           " show relative line number
+" set relativenumber           " show relative line number
 set mouse=a                  " allow use of mouse
 set ttyfast                  " optimize for fast terminal connections
 set nobackup                 " disable backups
@@ -67,9 +67,6 @@ set novisualbell
 set t_vb=
 autocmd! GUIEnter * set vb t_vb=
 
-" leader
-" let mapleader = "\<Space>"
-
 " Ack
 nmap <leader>s :Ack<Space>
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -84,7 +81,7 @@ let g:airline_powerline_fonts=1
 let g:airline_symbols.linenr = '¶'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-set guifont=Source\ Code\ Pro\ for\ Powerline
+set guifont=Fira\ Mono\ for\ Powerline
 
 " Bbye
 nnoremap <leader>q :Bdelete<CR>
@@ -97,9 +94,6 @@ vnoremap <D-/> :Commentary<CR>gv=gv
 " Ctrl+P
 let g:ctrlp_map = '<D-p>'
 let g:ctrlp_cmd = 'CtrlP'
-" let g:ctrlp_map = '<Space>'
-" let g:ctrlp_map = '<leader>p'
-
 " let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git'
 " let g:ctrlp_by_filename = 1 " search by filename and not full path
 " let g:ctrlp_clear_cache_on_exit = 0 " keep the cache after exit
@@ -128,29 +122,6 @@ let g:jsx_ext_required = 0
 " vim-multiple-cursors
 let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_start_key='<C-n>'
-
-" resolve neocomplete conflict
-function! Multiple_cursors_before()
-  if exists(':NeoCompleteLock')==2
-    exe 'NeoCompleteLock'
-  endif
-endfunction
-
-function! Multiple_cursors_after()
-  if exists(':NeoCompleteUnlock')==2
-    exe 'NeoCompleteUnlock'
-  endif
-endfunction
-
-" neocomplete
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" inoremap <expr><Esc> pumvisible() ? "\<C-y>" : "\<Esc>"
 
 " NERDTree
 map <D-Bslash> :NERDTreeToggle<CR>
