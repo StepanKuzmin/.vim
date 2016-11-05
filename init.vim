@@ -9,7 +9,6 @@ set hid                      " hide abandoned buffers
 set ruler                    " show the cursor position
 set mat=2                    " show matching brackets
 set number                   " show line numbers
-" set relativenumber           " show relative line number
 set mouse=a                  " allow use of mouse
 set ttyfast                  " optimize for fast terminal connections
 set nobackup                 " disable backups
@@ -91,52 +90,8 @@ map <D-/> :Commentary<CR>
 inoremap <D-/> <Esc>:Commentary<CR>==gi
 vnoremap <D-/> :Commentary<CR>gv=gv
 
-" Ctrl+P
-let g:ctrlp_map = '<D-p>'
-let g:ctrlp_cmd = 'CtrlP'
-" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|.git'
-" let g:ctrlp_by_filename = 1 " search by filename and not full path
-" let g:ctrlp_clear_cache_on_exit = 0 " keep the cache after exit
-
-" CtrlP auto cache clearing.
-function! SetupCtrlP()
-  if exists("g:loaded_ctrlp") && g:loaded_ctrlp
-    augroup CtrlPExtension
-      autocmd!
-      autocmd FocusGained  * CtrlPClearCache
-      autocmd BufWritePost * CtrlPClearCache
-    augroup END
-  endif
-endfunction
-if has("autocmd")
-  autocmd VimEnter * :call SetupCtrlP()
-endif
-
-" delimitMate
-" let delimitMate_expand_cr = 1
-" let delimitMate_expand_space = 1
-
 " vim-jsx
 let g:jsx_ext_required = 0
-
-" vim-multiple-cursors
-let g:multi_cursor_quit_key='<Esc>'
-let g:multi_cursor_start_key='<C-n>'
-
-" NERDTree
-map <D-Bslash> :NERDTreeToggle<CR>
-inoremap <D-Bslash> <Esc>:NERDTreeToggle<CR>==gi
-vnoremap <D-Bslash> :NERDTreeToggle<CR>gv=gv
-
-let g:NERDTreeMinimalUI = 1  " disable the 'Press ? for help' text
-let g:NERDTreeShowHidden = 1 " display hidden files
-
-" Close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Open a NERDTree automatically on vim startup
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -157,14 +112,3 @@ endif
 if executable(local_eslint)
   let g:syntastic_javascript_eslint_exec = local_eslint
 endif
-
-" Tabular
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
-
-" neovim
-" smooth-scroll
-map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
-map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
