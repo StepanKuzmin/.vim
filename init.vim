@@ -53,6 +53,7 @@ set ignorecase               " ignore case of searches
 set cursorline               " highlight current line
 set splitright               " open new buffers on right
 set splitbelow               " open new buffers on bottom
+set belloff=all              " disable bell
 set shiftwidth=2             " ident two
 set laststatus=2             " always display status
 set nocompatible             " make Vim more useful
