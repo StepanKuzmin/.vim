@@ -5,7 +5,6 @@ My beloved VIM setup
 ```shell
 git clone git@github.com:stepankuzmin/.vim.git
 cd .vim
-git submodule update --init --recursive
 brew install git the_silver_searcher
 brew tap caskroom/fonts
 brew cask install font-fira-code
@@ -13,6 +12,7 @@ brew cask install font-fira-code
 
 ## Features
 
+* uses [vim-plug](https://github.com/junegunn/vim-plug)
 * Move lines with **shift+arrows**
 * Scroll buffers with **ctrl+tab** and **ctr+shift+tab**
 * Search with **cmd+f** ([ack](https://github.com/mileszs/ack.vim))
